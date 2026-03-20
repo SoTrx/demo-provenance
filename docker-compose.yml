@@ -7,8 +7,7 @@ services:
     environment:
       - DEFAULT_GATEWAY=false
     volumes:
-      - ${VPN_CONFIG_PATH:-./vpn/config.ovpn}:/vpn/config.ovpn:ro
-      - ${VPN_AUTH_PATH:-./vpn/auth.txt}:/vpn/vpn.auth:ro
+      - ${VPN_CONFIG_PATH:-./vpn}:/vpn:ro
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
       - net.ipv6.conf.default.disable_ipv6=1
