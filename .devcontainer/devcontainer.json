@@ -1,7 +1,10 @@
 {
-    "name": "Demo - Provenance",
-    "dockerComposeFile": "docker-compose.yml",
-    "service": "devcontainer",
+    "name": "Demo - Fares",
+    "dockerComposeFile": [
+        "../docker-compose.yml",
+        "./docker-compose.dev.yml"
+    ],
+    "service": "app",
     "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
     "features": {
         "ghcr.io/devcontainers-extra/features/uv:1": {},

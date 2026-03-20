@@ -55,11 +55,12 @@ st.divider()
 
 
 if st.button("▶ Interpret Provenance", type="secondary", use_container_width=True):
-    st.subheader("Explanation")
-    st.write_stream(
-        client.explain_stream(
+    with st.spinner("Making sense of provenance…"):
+        result = client.explain(
             "openai/kimi-k2.5",
             query,
-            "\n".join(formula_expressions),
+            provenance,
         )
-    )
+
+    st.subheader("Explanation")
+    st.write(result)

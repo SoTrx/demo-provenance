@@ -52,25 +52,6 @@ class ScayleClient:
         ]
         return self.completion(model, messages)
 
-    def explain_stream(self, model: str, query: str, provenance: str):
-        """Yield text chunks from the LLM as they arrive."""
-        messages = [
-            Message(role="system", content=EXPLANATION_PROMPT),
-            Message(role="user",
-                    content=f"Query: {query}\nProvenance: {provenance}")
-        ]
-        response = completion(
-            api_base=f"{self.api_base}/api",
-            api_key=self.api_key,
-            model=model,
-            messages=messages,
-            stream=True,
-        )
-        for chunk in response:
-            token = chunk.choices[0].delta.content
-            if token:
-                yield token
-
 
 client = ScayleClient(API_BASE, API_USER, API_PASSWORD)
 
