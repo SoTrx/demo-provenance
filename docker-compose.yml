@@ -6,6 +6,7 @@ services:
       - NET_ADMIN
     environment:
       - DEFAULT_GATEWAY=false
+    network_mode: "host"
     volumes:
       - ${VPN_CONFIG_PATH:-./vpn/config.ovpn}:/vpn/config.ovpn:ro
       - ${VPN_AUTH_PATH:-./vpn/auth.txt}:/vpn/vpn.auth:ro
